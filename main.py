@@ -29,4 +29,12 @@ except sr.RequestError as e:
       "Could not request results from Google Speech Recognition service; {0}".
       format(e))
 
+# Note: you need to be using OpenAI Python v0.27.0 for the code below to work
+import openai
+import os
+openAIkey = os.environ['OPEN_AI']
+openai.api_key = openAIkey
+audio_file= open("Video_test_1.wav", "rb")
+transcript = openai.Audio.transcribe("whisper-1", audio_file)
+print(transcript)
 
